@@ -17,10 +17,14 @@ public class Principal {
         arvore.insereValor(arvore.getRaiz(), 9);
         arvore.insereValor(arvore.getRaiz(), 10);
         
-        arvore.calculaNivelNos(arvore.getRaiz(), 0);
-        arvore.liberaMemoria(arvore.getRaiz());
+//        arvore.calculaNivelNos(arvore.getRaiz(), 0);
+//        arvore.liberaMemoria(arvore.getRaiz());
         
         arvore.imprimeArvore(arvore.getRaiz());
+        
+        arvore.liberaMemoria(arvore.getRaiz());
+        
+        System.gc(); //chama o coletor de lixo
         
     }
     

@@ -23,32 +23,49 @@ public class ArvoreBinaria {
     //metodo que libera todos os Nos da arvore
     public void liberaMemoria(No raiz){
         
-        //se a arvore estiver vazia
-        if(raiz == null){
+//        //se a arvore estiver vazia
+//        if(raiz == null){
+//            return;
+//        }
+//        
+//        //se a arvore tiver apenas um No
+//        if(this.raiz.noFolha()){
+//            this.raiz = null;
+//            return;
+//        }
+//
+//        if(raiz.getEsquerdo() == null){
+//            if (raiz.getDireito().noFolha()){
+//                raiz.setDireito(null);
+//                liberaMemoria(this.raiz);
+//            }else{
+//                liberaMemoria(raiz.getDireito());
+//            }
+//        }else{
+//            if (raiz.getEsquerdo().noFolha()) {
+//                raiz.setEsquerdo(null);
+//                liberaMemoria(this.raiz);
+//            }else{
+//                liberaMemoria(raiz.getEsquerdo());
+//            }
+//        }
+        
+        //--------- ALGORITMO PROFESSOR ---------- //
+        if (raiz == null || raiz.noFolha()) {
             return;
         }
         
-        //se a arvore tiver apenas um No
-        if(this.raiz.noFolha()){
-            this.raiz = null;
-            return;
+        if (raiz.getDireito() != null){
+            liberaMemoria(raiz.getDireito());
+            raiz.setDireito(null);
         }
-
-        if(raiz.getEsquerdo() == null){
-            if (raiz.getDireito().noFolha()){
-                raiz.setDireito(null);
-                liberaMemoria(this.raiz);
-            }else{
-                liberaMemoria(raiz.getDireito());
-            }
-        }else{
-            if (raiz.getEsquerdo().noFolha()) {
-                raiz.setEsquerdo(null);
-                liberaMemoria(this.raiz);
-            }else{
-                liberaMemoria(raiz.getEsquerdo());
-            }
+        
+        if (raiz.getEsquerdo() != null) {
+            liberaMemoria(raiz.getEsquerdo());
+            raiz.setEsquerdo(null);
         }
+        
+        this.raiz = null;
     }
 
     //metodo que seta recursivamente o atributo nivel de cada no
